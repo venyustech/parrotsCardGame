@@ -9,8 +9,8 @@ function loadPage(){
     const qtdCards = [];
     for(let i = 0; i < (2*cardsQuantity); i++)
     {
-        qtdCards[i] =`<div class="card card${i+1}"data-identifier="card">
-    <div class="front" data-identifier="back-face">
+        qtdCards[i] =`<div class="card card${i+1}" data-identifier="card">
+    <div class="front-face face" data-identifier="front-face">
         <img class="logoImage" src="assets/front.png" alt="card"/>  
     </div>
 
@@ -19,7 +19,7 @@ function loadPage(){
     for(i = 1; i <= (2*cardsQuantity); i++)
     {   
         if(i <=  cardsQuantity){
-            qtdCards[i-1] +=`    <div class="verse card${i} hide" identifier="front-face">
+            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
         <img class="logoImage" src="assets/carta${i}.gif" alt="card"/>         
     </div>
 </div>
@@ -27,7 +27,7 @@ function loadPage(){
         }
         else if(i < 2*cardsQuantity){
             let k = i%cardsQuantity;
-            qtdCards[i-1] +=`    <div class="verse card${i+1} hide" identifier="front-face">
+            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
         <img class="logoImage" src="assets/carta${k}.gif" alt="card"/>   
              
     </div>
@@ -35,7 +35,7 @@ function loadPage(){
 `       
         }
         else if( i == 2*cardsQuantity){
-            qtdCards[i-1] +=`    <div class="verse card${i+1} hide" identifier="front-face">
+            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
             <img class="logoImage" src="assets/carta${cardsQuantity}.gif    " alt="card"/>   
                  
         </div>
