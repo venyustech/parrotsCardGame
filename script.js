@@ -1,5 +1,5 @@
+let cardsQuantity= parseInt(prompt("Qual a quantidade de pares de cartas? (2 a 7)"));
 function loadPage(){
-    let cardsQuantity= parseInt(prompt("Qual a quantidade de pares de cartas? (2 a 7)"));
     
     if(cardsQuantity < 2 || cardsQuantity >7)
         do{
@@ -9,7 +9,7 @@ function loadPage(){
     const qtdCards = [];
     for(let i = 0; i < (2*cardsQuantity); i++)
     {
-        qtdCards[i] =`<div class="card card${i+1}" data-identifier="card">
+        qtdCards[i] =`<div class="card card${i+1}" onclick="showCard(this)" data-identifier="card">
     <div class="front-face face" data-identifier="front-face">
         <img class="logoImage" src="assets/front.png" alt="card"/>  
     </div>
@@ -62,3 +62,27 @@ function loadPage(){
     loadCards.innerHTML = totalCards[0];
 }
 loadPage();
+
+let totalOfSeletions = 0;
+function showCard(bottom){
+    console.log(bottom);
+    
+    let selectedBottom = document.querySelector("bottom .selecionado" );
+    if(selectedBottom == null && ((totalOfSeletions == 0 ) || (totalOfSeletions==1) ))
+    {
+        bottom.classList.add("selecionado");
+        totalOfSeletions++;
+    }
+  /*  if(totalOfSeletions = 2){
+        verifyCompatibulity();
+    }
+        */
+    console.log(selectedBottom);
+    console.log(totalOfSeletions);
+    selectedBottom = null;
+}
+
+function verifyCompatibulity(bottom)
+{
+
+}
