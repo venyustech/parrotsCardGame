@@ -19,27 +19,25 @@ function loadPage(){
     for(i = 1; i <= (2*cardsQuantity); i++)
     {   
         if(i <=  cardsQuantity){
-            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
-        <img class="logoImage" src="assets/carta${i}.gif" alt="card"/>         
-    </div>
+            qtdCards[i-1] +=`<div class="back-face face hide" data-identifier="back-face">
+<img class="logo-back" src="assets/carta${i}.gif" alt="card"/>         
+</div>
 </div>
 ` 
         }
         else if(i < 2*cardsQuantity){
             let k = i%cardsQuantity;
-            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
-        <img class="logoImage" src="assets/carta${k}.gif" alt="card"/>   
-             
-    </div>
+            qtdCards[i-1] +=`<div class="back-face face hide" data-identifier="back-face">
+<img class="logo-back" src="assets/carta${k}.gif" alt="card"/>   
+</div>
 </div>
 `       
         }
         else if( i == 2*cardsQuantity){
-            qtdCards[i-1] +=`    <div class="back-face face hide" data-identifier="back-face">
-            <img class="logoImage" src="assets/carta${cardsQuantity}.gif    " alt="card"/>   
-                 
-        </div>
-    </div>
+            qtdCards[i-1] +=`<div class="back-face face hide" data-identifier="back-face">
+<img class="logo-back" src="assets/carta${cardsQuantity}.gif" alt="card"/>   
+</div>
+</div>
 `   
         }
 
@@ -64,25 +62,33 @@ function loadPage(){
 loadPage();
 
 let totalOfSeletions = 0;
+let doubleShot = [];
 function showCard(bottom){
     console.log(bottom);
+    console.log(doubleShot)
+    
     
     let selectedBottom = document.querySelector("bottom .selecionado" );
-    if(selectedBottom == null && ((totalOfSeletions == 0 ) || (totalOfSeletions==1) ))
+    if(selectedBottom == null && ((totalOfSeletions == 0 ) || (totalOfSeletions==1)) )
     {
         bottom.classList.add("selecionado");
         totalOfSeletions++;
+        doubleShot.push(bottom);
+
     }
-  /*  if(totalOfSeletions = 2){
-        verifyCompatibulity();
+    if(totalOfSeletions == 2){
+        verifyCompatibulity(bottom);
     }
-        */
     console.log(selectedBottom);
     console.log(totalOfSeletions);
     selectedBottom = null;
 }
 
 function verifyCompatibulity(bottom)
-{
+{   
+    if(doubleShot[0] === doubleShot[1])
+    {
+       
+    }
 
 }
