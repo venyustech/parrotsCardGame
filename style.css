@@ -5,13 +5,60 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
+    padding-top: 3%;
 
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 56px;
-    background-color: red;
     color: #75B79E;
+    background-color: rgb(237, 244, 191);
+
+
+}
+
+
+/*Main:*/
+.main-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 80%;
+}
+.card{
+    width: 117px;
+    height: 146px;
+    margin-top: 5px;
+
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color:#A7E9AF;
+    
+}
+.card img{   
+    width: 100px;
+    height: 100px;
+    margin: 20px 10px;
+}
+
+
+@media(max-width: 700px){
+.header{
+    position: fixed;
+    font-size: 36px;
+  }
+.main-wrapper{
+    padding-top: 36px;
+}
+.main-wrapper, .card-wrapper{
+    flex-direction: column;
+  }
 
 }
