@@ -10,9 +10,9 @@ function loadPage(){
     for(let i = 0; i < (2*cardsQuantity); i++)
     {
         qtdCards[i] =`<div class="card card${i+1}" onclick="showCard(this)" data-identifier="card">
-    <div class="front-face face" data-identifier="front-face">
-        <img class="logoImage" src="assets/front.png" alt="card"/>  
-    </div>
+<div class="front-face face" data-identifier="front-face">
+<img class="logoImage" src="assets/front.png" alt="card"/>  
+</div>
 
 ` 
     } 
@@ -28,17 +28,17 @@ function loadPage(){
         else if(i < 2*cardsQuantity){
             let k = i%cardsQuantity;
             qtdCards[i-1] +=`<div class="back-face face hide" data-identifier="back-face">
-<img class="logo-back" src="assets/carta${k}.gif" alt="card"/>   
+<img class="logo-back" src="assets/carta${k}.gif" alt="card"/>         
 </div>
 </div>
-`       
+`  
         }
         else if( i == 2*cardsQuantity){
             qtdCards[i-1] +=`<div class="back-face face hide" data-identifier="back-face">
-<img class="logo-back" src="assets/carta${cardsQuantity}.gif" alt="card"/>   
+<img class="logo-back" src="assets/carta${cardsQuantity}.gif" alt="card"/>         
 </div>
 </div>
-`   
+` 
         }
 
     }
@@ -53,7 +53,7 @@ function loadPage(){
     } 
     totalCards[0] +="`";
     
-    console.log(totalCards[0]);
+
 
     let loadCards = document.querySelector(".card-wrapper");
 
@@ -63,32 +63,65 @@ loadPage();
 
 let totalOfSeletions = 0;
 let doubleShot = [];
+
 function showCard(bottom){
-    console.log(bottom);
-    console.log(doubleShot)
-    
-    
-    let selectedBottom = document.querySelector("bottom .selecionado" );
+
+    let selectedBottom = document.querySelector("bottom .selected" );
     if(selectedBottom == null && ((totalOfSeletions == 0 ) || (totalOfSeletions==1)) )
     {
-        bottom.classList.add("selecionado");
+        bottom.classList.add("selected");
         totalOfSeletions++;
         doubleShot.push(bottom);
+        let back = bottom.querySelector(".back-face");
+        let front = bottom.querySelector(".front-face");
+        if( front.classList.contains("done"))
+            return;
 
+        back.classList.remove("hide");
+        back.classList.add("selected");
+        
+        front.classList.add("hide");
+        front.classList.add("selected");     
     }
     if(totalOfSeletions == 2){
-        verifyCompatibulity(bottom);
+        verifyCompatibility(bottom);
     }
-    console.log(selectedBottom);
-    console.log(totalOfSeletions);
-    selectedBottom = null;
 }
 
-function verifyCompatibulity(bottom)
-{   
-    if(doubleShot[0] === doubleShot[1])
-    {
-       
+function verifyCompatibility(bottom){
+
+    if(doubleShot[0].querySelector(".back-face").innerHTML === doubleShot[1].querySelector(".back-face").innerHTML){
+        for(i=0; i<2;i++)
+        {   
+            
+            let back = doubleShot[i].querySelector(".back-face");
+            let front = doubleShot[i].querySelector(".front-face");
+            back.classList.add("done");
+            back.classList.remove("selected");
+            front.classList.add("done");
+            front.classList.remove("selected");
+            console.log(back)
+            console.log(front)
+
+            totalOfSeletions = 0;
+            doubleShot = [];
+            alert("deu match");
+            
+        }
+    }
+    else{
+        for(i=0; i<2;i++)
+        { 
+            let back = doubleShot[i].querySelector(".back-face");
+            let front =  doubleShot[i].querySelector(".front-face");
+            back.classList.add("hide");
+            back.classList.remove("selected");
+            front.classList.remove("hide");
+            front.classList.remove("selected");
+
+            totalOfSeletions = 0;
+            alert("na proxima");
+        }
     }
 
 }

@@ -44,21 +44,10 @@ body{
     border: 1px solid #99CEA8;
     box-sizing: border-box;
     border-radius: 5px;
-  }
-
-/*.card{
-    width: 117px;
-    height: 146px;
-    margin-top: 5px;
-
-    border: 1px solid #99CEA8;
-    box-sizing: border-box;
-    border-radius: 5px;
     background-color:#A7E9AF;
-    
-}*/
+  }
 .card .back-face{
-    background-color: 1px 1px 1px rgba(0,0,0,1);
+    background-color: 1px 1px 1px rgba(0,0,0,.3);
 }
 .card img{   
     width: 100px;
@@ -80,6 +69,13 @@ body{
     transform-style: preserve-3d;
   }
  
+.hide{
+    display: none;
+}
+.border{
+    border: red;
+    border-radius: 5px;
+}
 
 @media(max-width: 700px){
     .header{
