@@ -6,6 +6,7 @@ body{
     justify-content: center;
     align-items: center;
     padding-top: 3%;
+    padding-bottom: 5%;
 
     font-family: Roboto;
     font-style: normal;
@@ -52,10 +53,9 @@ body{
 @media(max-width: 700px){
 .header{
     position: fixed;
-    font-size: 36px;
   }
 .main-wrapper{
-    padding-top: 36px;
+    padding-top: 126px;
 }
 .main-wrapper, .card-wrapper{
     flex-direction: column;
